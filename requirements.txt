@@ -1,6 +1,6 @@
 aiosqlite==0.17.0
 alembic==1.7.7
-annotated_types-0.7.0
+annotated_types==0.7.0
 anyio==3.6.1
 asgiref==3.5.2
 attrs==21.4.0
