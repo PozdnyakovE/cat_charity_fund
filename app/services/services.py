@@ -37,9 +37,9 @@ async def investment_process(
         free_objects_model = Donation
     free_objects = await session.execute(
         select(free_objects_model).where(
-                ~free_objects_model.fully_invested
+            ~free_objects_model.fully_invested
         ).order_by(free_objects_model.create_date)
-        )
+    )
     if free_objects:
         for free_object in free_objects.scalars().all():
             if (
