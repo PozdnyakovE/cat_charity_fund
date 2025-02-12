@@ -58,10 +58,21 @@ uvicorn app.main:app --reload
 ```
 ## Важно
 Проект настроен на работу с .env файлом, необходимо создать его в корне проекта и заполнить значениями, например:
-
+```
 APP_TITLE=Благотворительный фонд поддержки котиков QRKot
+```
+```
 APP_DESCRIPTION=Пожертвования на различные целевые проекты для котиков
+```
+```
 DATABASE_URL=sqlite+aiosqlite:///./fastapi.db 
+```
+```
 SECRET=your_secret_key
+```
+```
 FIRST_SUPERUSER_EMAIL=main@main.com
+```
+```
 FIRST_SUPERUSER_PASSWORD=qwerty1
+```
