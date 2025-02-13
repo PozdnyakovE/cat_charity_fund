@@ -55,7 +55,6 @@ async def investment_process(
                  ) == (model_object.full_amount - model_object.invested_amount)
             ):
                 await closing_single_investment(model_object, session)
-                print(model_object.fully_invested)
                 await closing_single_investment(free_object, session)
                 break
             free_object.invested_amount += ((model_object.full_amount -

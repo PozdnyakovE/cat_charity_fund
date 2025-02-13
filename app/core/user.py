@@ -10,7 +10,7 @@ from fastapi_users.authentication import (
 from fastapi_users_db_sqlalchemy import SQLAlchemyUserDatabase
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.core.config import settings
+from app.core.config import logger, MIN_PASSWORD_LENGTH, settings
 from app.core.db import get_async_session
 from app.models.user import User
 from app.schemas.user import UserCreate
@@ -40,7 +40,7 @@ class UserManager(IntegerIDMixin, BaseUserManager[User, int]):
         password: str,
         user: Union[UserCreate, User],
     ) -> None:
-        if len(password) < 3:
+        if len(password) < MIN_PASSWORD_LENGTH:
             raise InvalidPasswordException(
                 reason='Password should be at least 3 characters'
             )
@@ -52,7 +52,9 @@ class UserManager(IntegerIDMixin, BaseUserManager[User, int]):
     async def on_after_register(
             self, user: User, request: Optional[Request] = None
     ):
-        print(f'Пользователь {user.email} зарегистрирован.')
+        success_reg_message = f'Пользователь {user.email} зарегистрирован.'
+        print(success_reg_message)
+        logger.info(success_reg_message)
 
 
 async def get_user_manager(user_db=Depends(get_user_db)):
