@@ -53,7 +53,6 @@ class UserManager(IntegerIDMixin, BaseUserManager[User, int]):
             self, user: User, request: Optional[Request] = None
     ):
         success_reg_message = f'Пользователь {user.email} зарегистрирован.'
-        print(success_reg_message)
         logger.info(success_reg_message)
 
 
